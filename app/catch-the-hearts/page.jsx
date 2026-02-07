@@ -170,14 +170,14 @@ export default function CatchTheHeartsPage() {
     };
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center bg-linear-to-b from-rose-50 to-pink-100 p-4">
+        <div className="h-[80vh] md:min-h-screen flex flex-col items-center justify-center p-4">
             {screen === "start" && (
                 <div className="flex flex-col items-center gap-8 animate-in fade-in duration-300">
-                    <h1 className="text-4xl md:text-5xl font-bold text-rose-700 text-center drop-shadow-sm">
+                    <h1 className="text-5xl md:text-5xl font-bold text-white text-center drop-shadow-sm">
                         Catch The Hearts
                     </h1>
                     <p className="text-rose-600/90 text-center max-w-sm">
-                        Move left and right to catch 10 falling hearts. Use arrow keys or drag on mobile.
+                        Move left and right to catch hearts. Use arrow keys (← →) or drag on mobile.
                     </p>
                     <button
                         onClick={startGame}
@@ -191,16 +191,21 @@ export default function CatchTheHeartsPage() {
             {screen === "playing" && (
                 <div
                     ref={gameAreaRef}
-                    className="relative rounded-2xl overflow-hidden shadow-xl bg-white/80 border border-rose-200/60 select-none"
+                    className="relative rounded-2xl overflow-hidden shadow-xl bg-white border border-rose-200/60 select-none"
                     style={{ width: GAME_WIDTH, height: GAME_HEIGHT }}
                     onTouchStart={handleTouchStart}
                     onTouchMove={handleTouchMove}
                     onTouchEnd={handleTouchEnd}
                     onTouchCancel={handleTouchEnd}
                 >
-                    <div className="absolute top-3 right-3 z-10 text-rose-700 font-bold text-lg bg-white/90 px-3 py-1 rounded-lg shadow">
-                        Score: {score}/{TOTAL_HEARTS}
-                    </div>
+                    <Image
+                        src="/catch-the-hearts/tanishq.png"
+                        alt="Tanishq"
+                        width={PLAYER_WIDTH - 10}
+                        height={PLAYER_HEIGHT}
+                        className="object-contain absolute top-0 left-1/2 -translate-x-1/2"
+                        unoptimized
+                    />
 
                     {heart && (
                         <div

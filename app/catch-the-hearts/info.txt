@@ -1,0 +1,277 @@
+📄 Project Document — Catch The Hearts Game (Next.js Web Game)
+1. Project Overview
+
+Catch The Hearts is a simple arcade-style browser game built using Next.js.
+The player controls a character positioned at the bottom of the screen and must catch falling hearts.
+
+A total of 10 hearts will fall from the top one by one.
+Each heart falls straight downward in a linear path, but the horizontal starting position changes randomly for every heart.
+
+The goal is to catch as many hearts as possible before all 10 have fallen.
+
+2. Core Gameplay Concept
+Objective
+
+The player must move left and right to align underneath falling hearts and catch them before they hit the bottom boundary.
+
+Game Duration
+
+Exactly 10 hearts fall per game session.
+
+After the 10th heart finishes falling, the game ends automatically.
+
+Scoring
+
+Score starts at 0
+
+Each caught heart increases score by 1
+
+Final score is displayed as:
+
+Score: X / 10
+
+3. Game Screens / Flow
+3.1 Start Screen (Initial State)
+
+When the website loads:
+
+Show a centered title: Catch The Hearts
+
+Display a Start Button
+
+Game does not begin until user clicks Start
+
+UI Elements
+
+Title text
+
+Start button
+
+Action
+
+Clicking Start transitions into gameplay
+
+3.2 Gameplay Screen (Main Game)
+
+This is the playable area where:
+
+Hearts fall from the top
+
+Character moves at the bottom
+
+Score is shown at top-right
+
+UI Elements
+
+Play area container
+
+Falling heart sprite
+
+Player character sprite
+
+Score counter: Score: X/10
+
+3.3 End Screen (Game Over)
+
+After all 10 hearts have finished falling:
+
+Show Game Over text
+
+Display final score
+
+Provide a Try Again button
+
+UI Elements
+
+Final Score text
+
+Restart button
+
+Action
+
+Try Again resets the game and returns to Start Screen or restarts immediately
+
+4. Game Rules & Mechanics
+4.1 Falling Hearts Logic
+
+Hearts fall one at a time
+
+Total hearts per round: 10
+
+Each heart begins at:
+
+y = 0
+
+x = random position within game width
+
+Hearts move downward at constant speed until reaching the bottom boundary.
+
+4.2 Catch Condition (Important)
+
+A heart is counted as caught only if:
+
+The player character is positioned directly underneath the heart
+
+At the moment the heart reaches the player’s “catch line”
+
+📌 Catch Line Definition:
+
+The catch line is the top boundary of the player sprite (head/top portion).
+
+So the heart is caught only when:
+
+heart.bottom >= player.top
+AND
+heart.x overlaps player.x range
+
+
+If the player is not aligned underneath at that exact moment, the heart is missed.
+
+4.3 Miss Condition
+
+A heart is considered missed if:
+
+It reaches the bottom boundary without overlapping the player’s horizontal position
+
+Missed hearts do not increase score.
+
+5. Player Controls
+5.1 Desktop Controls
+
+Left Arrow → Move character left
+
+Right Arrow → Move character right
+
+Movement should be smooth and continuous while holding the key.
+
+5.2 Mobile Controls
+
+On touch devices:
+
+Player can drag the character left or right
+
+Character follows finger movement along the x-axis only
+
+No vertical movement allowed.
+
+6. Game Layout Requirements
+Play Area
+
+Fixed rectangular container centered on screen
+
+White or minimal background
+
+Heart spawns from top inside this area
+
+Character Placement
+
+Always stays near bottom
+
+Moves only horizontally
+
+Score Placement
+
+Displayed at top-right corner
+
+Format:
+
+6/10 Score
+
+7. Assets & Visual Style
+Sprites
+
+Heart sprite: pixel-art red heart
+
+Player sprite: small character/avatar standing at bottom
+
+Animation Style
+
+Hearts fall smoothly downward
+
+Character movement is responsive and fluid
+
+8. Technical Requirements (Next.js Implementation)
+Framework
+
+Next.js (App Router preferred)
+
+Rendering
+
+Use HTML Canvas OR DOM-based animation (either acceptable)
+
+Game loop using requestAnimationFrame
+
+State Management
+
+Game state should include:
+
+Current screen (start, playing, gameover)
+
+Current heart index (1–10)
+
+Heart position (x, y)
+
+Player position (x)
+
+Score count
+
+9. Game Logic Sequence
+Step-by-step Loop
+
+Show Start Screen
+
+On Start click → Begin game
+
+Spawn heart #1 at random x
+
+Animate falling downward
+
+Player moves left/right
+
+When heart reaches catch line:
+
+If overlapping player → Score +1
+
+Else → Miss
+
+Spawn next heart
+
+Repeat until 10 hearts completed
+
+Show End Screen with final score
+
+Try Again resets everything
+
+10. Reset Conditions
+
+On restart:
+
+Score resets to 0
+
+Heart counter resets to 0
+
+Player returns to center bottom
+
+Screen returns to Start or Gameplay depending on design
+
+11. Deliverables Expected from AI Code Generator
+
+The AI should generate:
+
+Full Next.js project structure
+
+Game component
+
+Start screen UI
+
+Game logic for 10 falling hearts
+
+Catch detection
+
+Keyboard + touch movement
+
+Score display
+
+End screen + restart button
+
+Clean responsive layout for desktop and mobile
