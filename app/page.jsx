@@ -66,7 +66,7 @@ const page = () => {
 
 
   return (
-    <div className='md:w-[800px] p-4 mx-auto'>
+    <div className='md:w-[800px] p-4 mx-auto pb-[200px]'>
       <h2 className='text-xl text-center mt-8'>Hey Tamanna,</h2>
       <h1 className='text-[50px] font-bold text-center text-white pb-10'>Will you be my Valentine?</h1>
       <img src="/propose.jpeg" alt="" className='w-[460px] mx-auto rounded-lg' />

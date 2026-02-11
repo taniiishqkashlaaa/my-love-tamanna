@@ -146,7 +146,7 @@ const Player = () => {
   return (
     <div className="fixed bottom-6 right-6 z-50">
       {isExpanded ? (
-        <div className="flex flex-col gap-4 rounded-2xl bg-white/30 backdrop-blur-md shadow-lg w-[330px] p-4 text-white relative">
+        <div className="flex flex-col gap-4 rounded-2xl bg-[#eb3972e2] backdrop-blur-md shadow-lg w-[330px] p-4 text-white relative">
           <button
             onClick={() => setIsExpanded(false)}
             className="absolute top-2 right-2 text-black rounded-full p-2 bg-white hover:text-black/40 cursor-pointer z-10"
