@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-[url('/bg-lg.png')] bg-cover bg-center bg-fixed`}
       >
-        {/* <Player /> */}
+        <Player />
         {children}
       </body>
     </html>
